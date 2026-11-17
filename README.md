@@ -67,10 +67,33 @@ npm run lint
 
 ChaturBot uses the following APIs:
 
-- **Google Gemini API** (for chat): The API key is currently hardcoded in `src/gemini.js`.
-- **HuggingFace Stable Diffusion** (for image generation): The API key is currently hardcoded in `src/huggingFace.js`.
+- **Google Gemini API** (for chat): Set via `VITE_GEMINI_API_KEY` environment variable
+- **HuggingFace Stable Diffusion** (for image generation): Set via `VITE_HUGGINGFACE_API_KEY` environment variable
 
-**For production or public use, you should move these keys to environment variables and never commit secrets to your repository.**
+### Local Development
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Add your API keys to `.env`:
+   ```
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   VITE_HUGGINGFACE_API_KEY=your_huggingface_api_key_here
+   ```
+3. The `.env` file is already in `.gitignore` to prevent committing secrets.
+
+### Vercel Deployment
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Go to Project Settings → Environment Variables
+4. Add the following environment variables:
+   - `VITE_GEMINI_API_KEY`: Your Google Gemini API key
+   - `VITE_HUGGINGFACE_API_KEY`: Your HuggingFace API key (optional)
+5. Redeploy the project for changes to take effect
+
+**Important**: Never commit actual API keys to your repository. Use environment variables for all deployments.
 
 ## Project Structure
 
